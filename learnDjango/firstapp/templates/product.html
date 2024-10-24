@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <div>
+        <label for="">productName</label>
+        <input type="text" name="productName">
+        </div>
+
+        <div>
+            <label for="">price</label>
+            <input type="text" name="price">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% if productName and price%}
+      <p>{{productName}}</p>
+      <p>{{price}}</p>
+
+{% endif %}
+</body>
+</html>

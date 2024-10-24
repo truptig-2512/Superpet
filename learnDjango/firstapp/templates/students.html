@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Students</h1>
+
+    <hr>
+
+    <p>{{id}}</p>
+    <p>Name is {{name}}</p>
+    <p>subject is {{subjects}}</p>
+
+    <a href="{% url 'home'%}">Click here to go home Page</a>
+
+    {% if id %}
+        <p>If block </p>
+    {% endif %}
+
+    <hr>
+    
+    <ul>
+    {% for subject in subjects %}
+
+      <!-- <li>{{subject}}</li> -->
+     {% if forloop.first %}
+        <li style="color: red;">{{subject}}</li>
+
+     {% else %}
+        <li style="color: green;">{{subject}}</li>
+
+     {% endif %}
+
+      <ul>
+       <li><b>counter:{{forloop.counter}}</b></li> 
+       <li><b>counter:{{forloop.counter0}}</b></li>
+       <li><b>revcounter:{{forloop.revcounter}}</b></li>
+       <li><b>revcounter:{{forloop.revcounter0}}</b></li>
+       <li><b>first:{{forloop.first}}</b></li>
+       <li><b>first:{{forloop.last}}</b></li>
+      </ul> 
+
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

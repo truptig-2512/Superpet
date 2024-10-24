@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Teachers</h1>
+    <p> id  : {{id}}</p>
+    <p> name : {{name}}</p>
+    <p> course: {{course}}</p>
+
+    <a href="{% url 'index'%}">Click here to go on index file</a>
+
+    <br>
+
+    <a href="{% url 'student'%}">Click here to go on student file</a>
+
+    <hr>
+    <ul>
+        {% for course in courses %}
+
+        <li>{{course}}</li>
+
+        {% endfor %}
+    </ul>
+</body>
+</html>
