@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+
+{% block content %}
+    <h1>Cart</h1>
+    <h1>Total: {{total}}</h1>
+    <hr>
+
+    {% for cartitem in cartitems%}
+
+     <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{cartitem.products.product_image.url}}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{cartitem.products.product_name}}</h5>
+              <p class="card-text">Qunatity:{{cartitem.quantity}}</p>
+              <p class="card-text">Price:{{cartitem.products.product_price}}</p>
+              <p class="card-text">Desciption:{{cartitem.products.product_description}}</p>
+
+              <form action="{% url 'update-cart' cartitem.id %}">
+                <button type="button" onclick="updateQuantity(-1,{{cartitem.id}})">-</button>
+                <input type="number" name="quantity" id="quantity{{cartitem.id}}" value="{{cartitem.quantity}}" min="1" max="10">
+      
+                <button type="button" onclick="updateQuantity(1,{{cartitem.id}})">+</button>
+                
+                <input class="btn btn-primary" type="submit" value="update cart">
+                
+              </form>
+
+              <a class="btn btn-danger" href="{% url 'delete-cartitem' cartitem.id %}" role="button">Delete</a>
+      
+            </div>
+          </div>
+        </div>
+       </div>
+
+    {% endfor %}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">product_name</th>
+          <th scope="col">price</th>
+          <th scope="col">quantity</th>
+          <th scope="col">total</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for cartitem in cartitems %}
+      
+        <tr>
+          <th scope="row">{{cartitem.products.id}}</th>
+          <td>{{cartitem.products.product_name}}</td>
+          <td>{{cartitem.products.product_price}}</td>
+          <td>{{cartitem.quantity}}</td>
+          <td>{{cartitem.quantity|multiply:cartitem.products.product_price}}</td>
+          
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}
+

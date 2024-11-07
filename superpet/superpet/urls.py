@@ -23,15 +23,18 @@ from products import urls
 
 from django.conf.urls.static import static
 from . import settings
+from cart import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name="home"),
     path('contact/',views.contact,name="contact"),
     path('about/',views.about,name="about"),
-    path('login/',views.login,name="login"),
+    path('login/',views.user_login,name="login"),
     path('register/',views.register,name="register"),
-    path('products/',include('products.urls'))
+    path('logout/',views.user_logout,name="logout"),
+    path('products/',include('products.urls')),
+    path('cart/',include('cart.urls')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

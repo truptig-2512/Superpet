@@ -33,5 +33,6 @@ urlpatterns = [
     path('product/',views.product),
     path('employee/',views.employee),
     path('class-based-view/',views.MyView.as_view(),name="class-based-view"),
+    path('filters/',views.learnFilters)
    
 ]
